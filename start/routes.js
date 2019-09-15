@@ -21,3 +21,7 @@ Route.post("/sessions", "SessionController.create");
 Route.resource("bicycleStations", "BicycleStationController")
   .apiOnly()
   .middleware("auth");
+Route.post("bicycleStations/:id/images", "ImageController.store").middleware(
+  "auth"
+);
+Route.get("images/:path", "ImageController.show");
