@@ -8,6 +8,9 @@ const BicycleStation = use("App/Models/BicycleStation");
  * Resourceful controller for interacting with images
  */
 class ImageController {
+  async show ({ params, response }) {
+    return response.download(Helpers.tmpPath(`uploads/${params.path}`));
+  }
   /**
    * Create/save a new image.
    * POST images
