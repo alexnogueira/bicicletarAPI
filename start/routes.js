@@ -20,7 +20,18 @@ Route.post("/users", "UserController.create");
 Route.post("/sessions", "SessionController.create");
 Route.resource("bicycleStations", "BicycleStationController")
   .apiOnly()
-  .middleware("auth");
+  .middleware(
+    new Map([
+      [
+        [
+          "bicycleStations.store",
+          "bicycleStations.update",
+          "bicycleStations.delete"
+        ],
+        ["auth"]
+      ]
+    ])
+  );
 Route.post("bicycleStations/:id/images", "ImageController.store").middleware(
   "auth"
 );
